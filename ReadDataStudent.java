@@ -59,10 +59,10 @@ public class ReadDataStudent{
         double sum = 0;
         double mean = this.mean(arr);
         for(double d: arr){
-            sum+= Math.pow(Math.abs(mean - d),2);
+            sum+= Math.pow(d-mean,2);
         }
-        sum = Math.sqrt(sum);
-        return sum/(arr.length -1); //sample variance!
+        sum = sum/(arr.length -1);
+        return Math.sqrt(sum); //sample variance!
     }
     
     //this returns the mean of the column of data passed in
@@ -85,7 +85,8 @@ public class ReadDataStudent{
         double mean = this.mean(arr);
         int count = 0;
         for(double d: arr){
-            stdArr[count] = d - mean/stdDeviation;
+            stdArr[count] = d - mean;
+            stdArr[count] = stdArr[count]/stdDeviation;
             count++;
         }
         return stdArr;
